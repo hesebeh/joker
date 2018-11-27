@@ -8,7 +8,7 @@ http.createServer((req, res) => {
 	//req.pipe(request(req.headers.referer)).pipe(res)
 	
 	try {
-		req.pipe(request(req.headers.referer, {gzip: true})).on('error', err => {
+		req.pipe(request(req.headers.referer, {gzip: true, json: true})).on('error', err => {
 			res.writeHead(200, {'Content-Type': 'text/plain'})
 			res.end('{}')
 		}).pipe(res)
